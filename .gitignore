@@ -1,1 +1,4 @@
-data/*
+data/
+.idea/
+tests/csvparser/__pycache__/
+activityanalyzer/__pycache__/
