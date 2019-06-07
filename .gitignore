@@ -2,3 +2,9 @@ data/
 .idea/
 tests/csvparser/__pycache__/
 activityanalyzer/__pycache__/
+
+activityanalyzer/logger/__pycache__/
+
+activityanalyzer/csvinterpreter/__pycache__/
+
+activityanalyzer/csvparser/__pycache__/

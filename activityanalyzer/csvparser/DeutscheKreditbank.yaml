@@ -1,0 +1,14 @@
+
+ColumnNames:
+  booking_date: 'Buchungstag'
+  value_date: 'Wertstellung'
+  booking_text: 'Buchungstext'
+  principal_beneficiary: 'Auftraggeber / Begünstigter'
+  reference_line: 'Verwendungszweck'
+  account_number: 'Kontonummer'
+  amount: 'Betrag (EUR)'
+
+FormatContext:
+  date: '%d.%m.%Y'
+  decimal_separator: ','
+  thousands_separator: '.'

@@ -1,13 +1,19 @@
 import csv
 import os
+import re
+
+from activityanalyzer.logger.logger import get_logger
 
 
 class CsvParser:
     def __init__(self, file_path):
         self._file_path = file_path
+        self._space_pattern = re.compile(r' +')
+
+        self._log = get_logger('CsvParser', __name__)
 
         if not os.path.exists(file_path):
-            pass
+            self._log.error("Csv file path doesn't exist: '{}'".format(file_path))
 
     def get_row_generator(self, *row_filters):
         """
@@ -20,7 +26,10 @@ class CsvParser:
             dialect = csv.Sniffer().sniff(str(file.readlines(5)), [',', ';'])
             reader = csv.reader(file, dialect)
             file.seek(0)
+
             for row in reader:
+                # Clean rows by deleting multiple white spaces
+                row = [re.sub(self._space_pattern, ' ', col).strip() for col in row]
                 if self.apply_row_filters(row, *row_filters):
                     yield row
 
@@ -41,37 +50,9 @@ class CsvParser:
 
 
 if __name__ == '__main__':
-    file_path1 = "../../data/comdirect_01_2019.csv"
-    file_path2 = "../../dat/dkb_2018.csv"
+    file_path1 = '../../data/comdirect_01_2019.csv'
+    file_path2 = '../../data/dkb_2018.csv'
 
-    #a = CsvFileParser(file_path).get_matrix_head()
-
-
-    a = CsvParser(file_path1).get_row_generator()
+    a = CsvParser(file_path2).get_row_generator()
     for line in a:
         print(str(line))
-
-
-
-
-
-
-
-
-    """
-        def get_file_format(self):
-            pass
-
-        def transaction_row_filter(self, row):
-            if re.match(r'\d\d\.\d\d\.(\d){4}', row[0]):
-                return True
-            else:
-                return False
-
-        def get_matrix_head(self):
-            for row in self.get_row_generator(self.transaction_row_filter):
-                print(str(row))
-
-        def get_transaction(self, bank):
-            return bank.parse(self.get_row_generator)
-    """

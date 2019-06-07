@@ -20,10 +20,10 @@ class TestCsvParser(unittest.TestCase):
         :param rows: list of rows
         :return: file path
         """
-        path = "tests/tmp.csv"
+        path = "tmp.csv"
         n = 1
         while os.path.exists(path):
-            path = "tests/tmp{}.csv".format(n)
+            path = "tmp{}.csv".format(n)
             n += 1
 
         with open(path, "w") as file:

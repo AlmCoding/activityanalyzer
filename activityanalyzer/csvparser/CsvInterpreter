@@ -1,0 +1,11 @@
+2019-06-02 12:54:50,692 - __main__ - ERROR - Csv column name scheme and yaml column name scheme don't match!
+2019-06-02 12:54:50,692 - __main__ - ERROR - Csv: Kundenreferenz, Yaml: Buchungstag, Column index: 10
+2019-06-02 12:55:46,568 - __main__ - ERROR - Csv column name scheme and yaml column name scheme don't match!
+2019-06-02 12:55:46,568 - __main__ - ERROR - Kundenreferenz(csv) != Buchungstag(yaml), Column index: 10
+2019-06-02 12:56:12,838 - __main__ - ERROR - Csv column name scheme and yaml column name scheme don't match!
+2019-06-02 12:56:12,838 - __main__ - ERROR - 'Kundenreferenz'(csv) != 'Buchungstag'(yaml), Column index: '10'
+2019-06-02 12:56:42,251 - __main__ - ERROR - Csv column name scheme and yaml column name scheme don't match!
+2019-06-02 12:56:42,251 - __main__ - ERROR - 'Kundenreferenz' in csv file != 'Buchungstag' in yaml file, Column index: '10'
+2019-06-02 13:04:27,832 - __main__ - ERROR - Column name specified in yaml file not found in csv file: 'Buchungstag1'.
+2019-06-02 13:06:08,609 - __main__ - ERROR - Unable to find 'Buchungstag1' column name in csv file specified in yaml config file
+2019-06-02 13:06:50,301 - __main__ - ERROR - Unable to find 'Buchungstag1' column name in csv file. Check yaml config file.
