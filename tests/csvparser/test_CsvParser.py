@@ -2,7 +2,7 @@ import unittest
 import types
 import os
 
-from activityanalyzer.csvparser.CsvParser import CsvParser
+from activityanalyzer.CsvParser import CsvParser
 
 
 class TestCsvParser(unittest.TestCase):
