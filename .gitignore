@@ -1,10 +1,9 @@
 data/
 .idea/
+venv/
 tests/csvparser/__pycache__/
 activityanalyzer/__pycache__/
-
-activityanalyzer/logger/__pycache__/
-
+activityanalyzer/log/
+activityanalyzer/log/__pycache__/
 activityanalyzer/csvinterpreter/__pycache__/
-
 activityanalyzer/csvparser/__pycache__/

@@ -1,21 +1,30 @@
+import os
+import re
+
 from activityanalyzer.CsvInterpreter import CsvInterpreter
 from activityanalyzer.pie_chart import pie_chart
 
 
 if __name__ == '__main__':
-    csv_files = '../data/dkb_2018.csv', '../data/dkb_2019.csv', 'nudes.png'
+    directory = '../data'
+    csv_files = [os.path.join(directory, file) for file in os.listdir(directory) if re.match(r'.+\.csv$', file)]
     yaml_file = 'DeutscheKreditbank.yaml'
 
     interpreter = CsvInterpreter(csv_files, yaml_file)
-    transactions = interpreter.transactions
 
-    a = len(transactions)
+    b = interpreter.get_balances()
+    avg = sum([bb.amount for bb in b])/len(b)
+    t = interpreter.get_transactions()
+    x = interpreter.get_expenses()
+    e = interpreter.get_earnings()
 
-    for t in transactions:
-        t.print()
+    # https://www.dataquest.io/blog/tutorial-time-series-analysis-with-pandas/
+
+    for tt in e:
+        tt.print()
 
     beneficiaries = {}
-    for transaction in interpreter.transactions:
+    for transaction in t:
         if transaction.principal_beneficiary not in beneficiaries.keys():
             beneficiaries[transaction.principal_beneficiary] = 0.0
         beneficiaries[transaction.principal_beneficiary] += transaction.amount

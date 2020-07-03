@@ -13,8 +13,15 @@ class Transaction:
         self.amount = None
         self.parse(row, column_names, format_context)
 
+    # def __lt__(self, other):
+    #    return self.booking_date < other.booking_date
+
+    def get_date(self):
+        return self.value_date
+
     def parse(self, row: list, column_names: dict, format_context: dict):
-        self.booking_date = row[column_names['booking_date']]
+        # self.booking_date = row[column_names['booking_date']]
+        self.booking_date = Transaction.parse_date(row[column_names['booking_date']], format_context)
         self.value_date = Transaction.parse_date(row[column_names['value_date']], format_context)
         self.booking_text = row[column_names['booking_text']]
         self.principal_beneficiary = row[column_names['principal_beneficiary']]
@@ -39,4 +46,4 @@ class Transaction:
     @staticmethod
     def parse_date(date, format_context):
         date_format = format_context['date']
-        return datetime.strptime(date, date_format).date()
+        return datetime.strptime(date, date_format)

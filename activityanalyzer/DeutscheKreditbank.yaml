@@ -14,3 +14,6 @@ ColumnNames:
   reference_line: 'Verwendungszweck'
   account_number: 'Kontonummer'
   amount: 'Betrag (EUR)'
+
+DefaultValues:
+  principal_beneficiary: 'Cash Deposit'
