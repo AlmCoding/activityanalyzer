@@ -80,7 +80,8 @@ class CsvInterpreter:
         return self._balances
 
     def get_balances(self) -> iter:
-        return [s for s in self._statements if isinstance(s, Balance)]
+        return self._balances
+        # return [s for s in self._statements if isinstance(s, Balance)]
 
     def get_transactions(self) -> iter:
         return [s for s in self._statements if isinstance(s, Transaction)]
@@ -120,39 +121,3 @@ class CsvInterpreter:
         if row:
             return bool(re.match(r'^Kontostand vom.+$', row[0]))
         return False
-
-
-"""
-        # for row in sorted(transaction_rows, key=lambda row: row[0]):
-"""
-
-"""
-def parse_transactions(self) -> None:
-    # Remove potential duplicates
-    transaction_rows = set()
-    for row in self._csv_parser.get_row_generator(self.transaction_filter):
-        transaction_rows.add(row)
-
-    # Parse transaction rows
-    for row in transaction_rows:
-        t = Transaction(row, self._column_names, self._format_context)
-        if t.amount > 0.0 and not t.principal_beneficiary:
-            t.principal_beneficiary = self._default_values['principal_beneficiary']
-        self.transactions.append(t)
-
-    # Sort transactions
-    self.transactions = sorted(self.transactions, key=lambda t: t.booking_date)
-
-def parse_balances(self) -> None:
-    balance_rows = set()
-    for row in self._csv_parser.get_row_generator(self.balance_filter):
-        balance_rows.add(row)
-
-    # Parse balance rows
-    for row in balance_rows:
-        t = Transaction(row, self._column_names, self._format_context)
-        self.balances.append(t)
-
-    # Sort balances
-    self.balances = sorted(self.balances, key=lambda t: t.booking_date)
-"""

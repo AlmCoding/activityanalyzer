@@ -13,7 +13,6 @@ if __name__ == '__main__':
     interpreter = CsvInterpreter(csv_files, yaml_file)
 
     b = interpreter.get_balances()
-    avg = sum([bb.amount for bb in b])/len(b)
     t = interpreter.get_transactions()
     x = interpreter.get_expenses()
     e = interpreter.get_earnings()
