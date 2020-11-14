@@ -1,7 +1,10 @@
 import os
 import re
+import pandas as pd
 
 from activityanalyzer.CsvInterpreter import CsvInterpreter
+from activityanalyzer.visualizations.plot_balances import plot_balances
+
 from activityanalyzer.pie_chart import pie_chart
 
 
@@ -11,13 +14,16 @@ if __name__ == '__main__':
     yaml_file = 'DeutscheKreditbank.yaml'
 
     interpreter = CsvInterpreter(csv_files, yaml_file)
-
     b = interpreter.get_balances()
     t = interpreter.get_transactions()
     x = interpreter.get_expenses()
     e = interpreter.get_earnings()
 
     # https://www.dataquest.io/blog/tutorial-time-series-analysis-with-pandas/
+
+    df_balances = pd.DataFrame()
+
+    plot_balances(df_balances)
 
     for tt in e:
         tt.print()
