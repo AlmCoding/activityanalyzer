@@ -1,4 +1,5 @@
 pyyaml
 numpy
 pandas
+matplotlib
 seaborn

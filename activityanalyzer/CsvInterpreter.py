@@ -114,7 +114,7 @@ class CsvInterpreter:
         return earnings
 
     def get_expenses(self, pandas_dataframe=True) -> iter:
-        expenses = [t for t in self._transactions if t.amount <= 0.0]
+        expenses = [t for t in self._transactions if t.amount < 0.0]
         if pandas_dataframe:
             return self._generate_dataframe(expenses)
         return expenses
